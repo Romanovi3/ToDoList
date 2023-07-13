@@ -1,28 +1,46 @@
-let inputText = document.getElementById ('title');
-console.log (inputText)
-let btnSubmit = document.getElementById ('create')
-console.log (btnSubmit);
-let lil = document.getElementById ('list')
-console.log (lil);
+    let input = document.getElementById ('title');
+    console.log (input);
+
+    let ul = document.getElementById ('list')
+    console.log (ul)
+
+    let btn = document.getElementById ('create')
+    console.log(btn)
 
 
-btnSubmit.onclick = function (){
-    if (inputText.value == 0){
-        alert ('Введите текст заметки...')
-        return;
-    }
-    else{
-    lil.insertAdjacentHTML ('beforeend',`<li class="list-group-item d-flex justify-content-between align-items-center" id="liList">
-    <span>${inputText.value}</span>
-    <span>
-        <span class="btn btn-small btn-success">&check;</span>
-        
-        <span class="btn btn-small btn-danger"> &ltimes;</span>
-    </span>
-</li>` )
-    }
-    inputText.value = '';
-};
-function edit (){
+    const notes =[ 'учиться', 'kushat' ]
+    notes.push ('asd')
+    console.log (notes)
+
     
-}
+    function getNote(title){
+        return `<li class="list-group-item d-flex justify-content-between align-items-center" id="liList">
+            <span>${title}</span>
+            <span>
+                <span class="btn btn-small btn-success">&check;</span>
+                <span class="btn btn-small btn-danger"> &ltimes;</span>
+            </span>
+        </li>`
+    };
+
+    function render (){
+        for ( let i = 0; i < notes.length; i++){
+            ul.insertAdjacentHTML ('beforeend', 
+        getNote(notes[i]))
+        }
+    }
+    render ();
+
+    btn.onclick = function (){
+        if ( input.value == 0 ){
+            alert ('Введите заметку...')
+            return;
+        }
+        else{
+            ul.insertAdjacentHTML ('beforeend', getNote (input.value))
+        }
+        input.value = ' ';
+    }
+
+    
+
