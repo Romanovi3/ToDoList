@@ -49,7 +49,7 @@
         }
             const newNote = {
                     title: input.value,
-                    completed: true,
+                    completed: false,
             }
                 notes.push (newNote),
                 render(newNote);
